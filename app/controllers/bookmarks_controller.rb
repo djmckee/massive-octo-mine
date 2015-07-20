@@ -1,11 +1,12 @@
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /bookmarks
   # GET /bookmarks.json
   def index
-    @bookmarks = Bookmark.all
-    
+    @bookmarks = current_user.bookmarks
+
   end
 
   # GET /bookmarks/1
